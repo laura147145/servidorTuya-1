@@ -1,24 +1,31 @@
 package com.example.PEDIDOSAPP.modelos;
 
 import com.example.PEDIDOSAPP.ayudas.enums.PedidoEnum;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "Pedido")
 public class Pedido {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_pedido")
     private Integer id;
-    private Integer idUsuario;
-    private Integer idRestaurante;
+
+//    private Integer idUsuario;
+//    private Integer idRestaurante;
+
     private PedidoEnum estado;
     private LocalDate fechaPedido;
+    @Column(length = 10,nullable = false)
     private double total;
 
     public Pedido() {
     }
 
-    public Pedido(Integer id, Integer idUsuario, Integer idRestaurante, PedidoEnum estado, LocalDate fechaPedido, double total) {
+    public Pedido(Integer id, PedidoEnum estado, LocalDate fechaPedido, double total) {
         this.id = id;
-        this.idUsuario = idUsuario;
-        this.idRestaurante = idRestaurante;
         this.estado = estado;
         this.fechaPedido = fechaPedido;
         this.total = total;
@@ -30,22 +37,6 @@ public class Pedido {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Integer getIdUsuario() {
-        return idUsuario;
-    }
-
-    public void setIdUsuario(Integer idUsuario) {
-        this.idUsuario = idUsuario;
-    }
-
-    public Integer getIdRestaurante() {
-        return idRestaurante;
-    }
-
-    public void setIdRestaurante(Integer idRestaurante) {
-        this.idRestaurante = idRestaurante;
     }
 
     public PedidoEnum getEstado() {

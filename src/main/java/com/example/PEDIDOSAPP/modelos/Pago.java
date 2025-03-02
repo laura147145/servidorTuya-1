@@ -2,14 +2,24 @@ package com.example.PEDIDOSAPP.modelos;
 
 import com.example.PEDIDOSAPP.ayudas.enums.PagoEnum;
 import com.example.PEDIDOSAPP.ayudas.enums.PagoEstadoEnum;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
-
+@Entity
+@Table(name = "Pago")
 public class Pago {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_pago")
     private Integer id;
-    private Integer idPedido;
+
+//    private Integer idPedido;
+
+    @Column()
     private PagoEnum metodoPago;
+    @Column()
     private PagoEstadoEnum estado;
+    @Column()
     private LocalDate fechaPago;
 
     public Pago() {
@@ -17,7 +27,6 @@ public class Pago {
 
     public Pago(Integer id, Integer idPedido, PagoEnum metodoPago, PagoEstadoEnum estado, LocalDate fechaPago) {
         this.id = id;
-        this.idPedido = idPedido;
         this.metodoPago = metodoPago;
         this.estado = estado;
         this.fechaPago = fechaPago;
@@ -29,14 +38,6 @@ public class Pago {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Integer getIdPedido() {
-        return idPedido;
-    }
-
-    public void setIdPedido(Integer idPedido) {
-        this.idPedido = idPedido;
     }
 
     public PagoEnum getMetodoPago() {

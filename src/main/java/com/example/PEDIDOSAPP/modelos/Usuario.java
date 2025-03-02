@@ -4,19 +4,22 @@ import com.example.PEDIDOSAPP.ayudas.enums.UsuarioEnum;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="usuario_tabla")
+@Table(name="Usuario")
 public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id_usuario")
     private  Integer id;
-    @Column(name = "nombre",length = 100,unique = true,nullable = false)
+    @Column(length = 100,unique = true,nullable = false)
     private  String nombre;
     @Column(name="email",length = 150,unique = true,nullable = false)
     private String correoElectronico;
+    @Column(length = 250,nullable = false)
     private String contraseña;
+    @Column(length = 20)
     private String telefono;
+    @Column(nullable = false)
     private UsuarioEnum tipoUsuario;
 
     public Usuario() {

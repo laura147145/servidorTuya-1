@@ -1,10 +1,21 @@
 package com.example.PEDIDOSAPP.modelos;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "Repartidor")
 public class Repartidor {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_repartidor")
     private Integer id;
+    @Column(length = 100,nullable = false)
     private String nombre;
+    @Column(length = 20,nullable = false)
     private String telefono;
+    @Column(name = "email",length = 150,unique = true,nullable = false)
     private String correo;
+    @Column(length = 50)
     private String vehiculo;
 
     public Repartidor() {

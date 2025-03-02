@@ -1,19 +1,29 @@
 package com.example.PEDIDOSAPP.modelos;
 
+import jakarta.persistence.*;
+
+import javax.lang.model.element.Name;
+
+@Entity
+@Table(name = "DetallePedido")
 public class Detalle {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_detalle")
     private Integer id;
-    private Integer idPedido;
-    private  Integer idProducto;
+
+//    private Integer idPedido;
+//    private  Integer idProducto;
+    @Column(nullable = false)
     private int cantidad;
+    @Column(length = 10,nullable = false)
     private double subTotal;
 
     public Detalle() {
     }
 
-    public Detalle(Integer id, Integer idPedido, Integer idProducto, int cantidad, double subTotal) {
+    public Detalle(Integer id, int cantidad, double subTotal) {
         this.id = id;
-        this.idPedido = idPedido;
-        this.idProducto = idProducto;
         this.cantidad = cantidad;
         this.subTotal = subTotal;
     }
@@ -24,22 +34,6 @@ public class Detalle {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Integer getIdPedido() {
-        return idPedido;
-    }
-
-    public void setIdPedido(Integer idPedido) {
-        this.idPedido = idPedido;
-    }
-
-    public Integer getIdProducto() {
-        return idProducto;
-    }
-
-    public void setIdProducto(Integer idProducto) {
-        this.idProducto = idProducto;
     }
 
     public int getCantidad() {

@@ -1,18 +1,29 @@
 package com.example.PEDIDOSAPP.modelos;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "Producto")
 public class Producto {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_Producto")
     private Integer id;
-    private  Integer idRestaurante;
+    /*!!!!!!!!!
+    @Column()
+    private  Integer idRestaurante;*/
+    @Column(length = 100,nullable = false)
     private String nombre;
+    @Column(length = 10,nullable = false)
     private double precio;
+    @Column(nullable = false)
     private String descripcion;
 
     public Producto() {
     }
 
-    public Producto(Integer id, Integer idRestaurante, String nombre, double precio, String descripcion) {
+    public Producto(Integer id, String nombre, double precio, String descripcion) {
         this.id = id;
-        this.idRestaurante = idRestaurante;
         this.nombre = nombre;
         this.precio = precio;
         this.descripcion = descripcion;
@@ -24,14 +35,6 @@ public class Producto {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Integer getIdRestaurante() {
-        return idRestaurante;
-    }
-
-    public void setIdRestaurante(Integer idRestaurante) {
-        this.idRestaurante = idRestaurante;
     }
 
     public String getNombre() {

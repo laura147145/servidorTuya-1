@@ -1,11 +1,24 @@
 package com.example.PEDIDOSAPP.modelos;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "Direccion")
 public class Direccion {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_direccion")
     private Integer id;
-    private Integer idUsuario;
+
+//    private Integer idUsuario;
+
+    @Column(length = 250,nullable = false)
     private String calle;
+    @Column(length = 100,nullable = false)
     private String ciudad;
+    @Column(name = "codigo_postal",length = 20,nullable = false)
     private String codigoPostal;
+    @Column(length = 50,nullable = false)
     private String pais;
 
     public Direccion() {
@@ -13,7 +26,6 @@ public class Direccion {
 
     public Direccion(Integer id, Integer idUsuario, String calle, String ciudad, String codigoPostal, String pais) {
         this.id = id;
-        this.idUsuario = idUsuario;
         this.calle = calle;
         this.ciudad = ciudad;
         this.codigoPostal = codigoPostal;
@@ -26,14 +38,6 @@ public class Direccion {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Integer getIdUsuario() {
-        return idUsuario;
-    }
-
-    public void setIdUsuario(Integer idUsuario) {
-        this.idUsuario = idUsuario;
     }
 
     public String getCalle() {
