@@ -9,9 +9,9 @@ public class Producto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_Producto")
     private Integer id;
-    /*!!!!!!!!!
-    @Column()
-    private  Integer idRestaurante;*/
+
+//    @Column()
+//    private  Integer idRestaurante;
     @Column(length = 100,nullable = false)
     private String nombre;
     @Column(length = 10,nullable = false)
