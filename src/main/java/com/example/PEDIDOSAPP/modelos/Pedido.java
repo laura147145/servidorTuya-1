@@ -1,6 +1,7 @@
 package com.example.PEDIDOSAPP.modelos;
 
 import com.example.PEDIDOSAPP.ayudas.enums.PedidoEnum;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -20,6 +21,15 @@ public class Pedido {
     private LocalDate fechaPedido;
     @Column(length = 10,nullable = false)
     private double total;
+
+    @ManyToOne
+    @JoinColumn(name = "fk_usuario",referencedColumnName = "id_usuario")
+    @JsonBackReference
+    private Usuario usuario;
+
+    @ManyToOne
+    @JsonBackReference
+    private Pago pago;
 
     public Pedido() {
     }

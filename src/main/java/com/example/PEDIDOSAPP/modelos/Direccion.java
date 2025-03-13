@@ -1,5 +1,7 @@
 package com.example.PEDIDOSAPP.modelos;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -20,7 +22,10 @@ public class Direccion {
     private String codigoPostal;
     @Column(length = 50,nullable = false)
     private String pais;
-
+    @ManyToOne
+    @JoinColumn(name = "fk_usuario",referencedColumnName = "id_usuario")
+    @JsonBackReference
+    private Usuario usuario;
     public Direccion() {
     }
 
