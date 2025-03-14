@@ -26,6 +26,7 @@ public class Pago {
     private LocalDate fechaPago;
 
     @OneToMany(mappedBy = "pago")
+    @JoinColumn(name = "fk_pedido",referencedColumnName = "id_pedido")
     @JsonManagedReference
     private List<Pedido> pedidos;
 

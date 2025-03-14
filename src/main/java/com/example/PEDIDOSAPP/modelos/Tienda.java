@@ -1,13 +1,16 @@
 package com.example.PEDIDOSAPP.modelos;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
-@Table (name ="Restaurante" )
+@Table (name ="tienda" )
 public class Tienda {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_restaurante")
+    @Column(name = "id_tienda")
     private Integer id;
     @Column(length = 100,nullable = false)
     private String nombre;
@@ -17,6 +20,14 @@ public class Tienda {
     private String telefono;
     @Column(length = 50)
     private String categoria;
+
+    @OneToMany(mappedBy = "tienda")
+    @JsonManagedReference
+    private List<Pedido> pedidos;
+
+    @OneToMany(mappedBy = "tienda")
+    @JsonManagedReference
+    private List<Producto> productos;
 
     public Tienda() {
     }

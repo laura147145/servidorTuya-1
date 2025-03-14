@@ -1,9 +1,13 @@
 package com.example.PEDIDOSAPP.modelos;
 
 import com.example.PEDIDOSAPP.ayudas.enums.EntregaEnum;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.List;
+
 @Entity
 @Table(name = "Entrega")
 public class Entrega {
@@ -19,6 +23,16 @@ public class Entrega {
     private LocalDate fechaEntrega;
     @Column()
     private EntregaEnum estadoEntrega;
+
+    @ManyToOne
+    @JoinColumn(name = "fk_repartidor",referencedColumnName = "id_repartidor")
+    @JsonBackReference
+    private Repartidor repartidor;
+
+    @OneToMany(mappedBy = "Entrega")
+    @JoinColumn(name = "fk_pedido",referencedColumnName = "id_pedido")
+    @JsonManagedReference
+    private List<Pedido> pedidos;
 
     public Entrega() {
     }

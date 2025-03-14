@@ -22,10 +22,12 @@ public class Direccion {
     private String codigoPostal;
     @Column(length = 50,nullable = false)
     private String pais;
+
     @ManyToOne
     @JoinColumn(name = "fk_usuario",referencedColumnName = "id_usuario")
     @JsonBackReference
     private Usuario usuario;
+
     public Direccion() {
     }
 
